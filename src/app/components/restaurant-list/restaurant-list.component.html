@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="restaurant-container">
+    <div class="menu-bar">
+        <h3 class="tagline">Choose your favourite one</h3>      
+    </div>
+
+    <div class="restaurant-cards" [class]="{'empty-search': !retaurants.length}" *ngIf="!retaurants.length">
+        <div class="empty-restaurant">
+            <mat-spinner *ngIf="!retaurantsConstant.length"></mat-spinner>
+            <h3 *ngIf="retaurantsConstant.length">
+                No restaurants found!
+            </h3>
+        </div>
+    </div>
+
+    <div class="restaurant-cards">
+        <div *ngFor="let retaurant of retaurants" class="restaurant">
+            <app-restaurant-card [retaurantName]="retaurant.name" [retaurantThumbnail]="retaurant.thumbnail_image" [retaurantImage]="retaurant.feature_image"
+            [cuisines]="retaurant.cuisines" [rating]="retaurant.rating" [review]="retaurant.reviews" (click)="goToRestaurant(retaurant)" ></app-restaurant-card>
+        </div>
+    </div>
+
+    </div>
